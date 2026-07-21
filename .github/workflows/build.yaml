@@ -1,4 +1,4 @@
-name: Maven Build, SonarQube and Nexus
+name:  build and deploy train-ticket-reservation
 
 on:
   push:
