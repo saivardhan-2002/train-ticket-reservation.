@@ -34,9 +34,9 @@ jobs:
       - name: build, test and sonarscan
         run: |
           mvn clean sonar:sonar \
-          - D sonar.projectkey= trainticket\
-          - D sonar.host.url= "${{secrets.SONAR_HOST_URL}}"\
-          - D sonar.login= "${{secrets.SONAR_TOKEN}}"\
+          - Dsonar.projectkey= trainticket\
+          - Dsonar.host.url= "${{secrets.SONAR_HOST_URL}}"\
+          - Dsonar.login= "${{secrets.SONAR_TOKEN}}"\
           
        
           
