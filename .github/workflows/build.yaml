@@ -13,27 +13,34 @@ jobs:
 
     steps:
 
-      - name: Checkout Source
+      - name: Checkout code
         uses: actions/checkout@v4
 
       # Build using Java 8
-      - name: Setup Java 8
+      - name: Setup Java 
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '8'
-          cache: maven
+          java-version: '17'
+          
 
-      - name: Build Project
-        run: mvn clean install -DskipTests
+      - name:  validate with maven
+        run: mvn validate
+      - name: compile with maven
+        run: mvn compile
+      - name: test with maven
+        run: mvn test
+      - name: package with maven 
+        run: mvn package
+      
 
       - name: Verify WAR
-        run: ls -lh target
+        run: ls -lh target/
 
         ##SONARQUBE CODE QUALITY
       - name: BUILD, TEST and sonarscan
         run: |
-          mvn clean sonar:sonar \
+          mvn clean verify sonar:sonar \
           - Dsonar.projectkey= train.ticket\
           - Dsonar.host.url= "${{secrets.SONAR_HOST_URL}}" \
           - Dsonar.login= "${{secrets.SONAR_TOKEN}}"
