@@ -31,12 +31,12 @@ jobs:
         run: ls -lh target
 
         ##SONARQUBE CODE QUALITY
-      - name: build, test and sonarscan
+      - name: BUILD, TEST and sonarscan
         run: |
           mvn clean sonar:sonar \
-          - Dsonar.projectkey= trainticket\
-          - Dsonar.host.url= "${{secrets.SONAR_HOST_URL}}"\
-          - Dsonar.login= "${{secrets.SONAR_TOKEN}}"\
+          - Dsonar.projectkey= train.ticket\
+          - Dsonar.host.url= "${{secrets.SONAR_HOST_URL}}" \
+          - Dsonar.login= "${{secrets.SONAR_TOKEN}}"
           
        
           
