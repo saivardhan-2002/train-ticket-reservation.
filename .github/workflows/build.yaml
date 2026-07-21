@@ -30,13 +30,13 @@ jobs:
       - name: Verify WAR
         run: ls -lh target
 
-        ##SONARQUBE QUAL
-      - name: build,test and sonarscan
+        ##SONARQUBE CODE QUALITY
+      - name: build, test and sonarscan
         run: |
-          mvn clean sonar: sonar \
+          mvn clean sonar:sonar \
           - D sonar.projectkey= trainticket\
-          - D sonar.host.url= "${{secrets.sonar_HOST_URL}}"\
-          - D sonar.login= "${{secrets.sonar_TOKEN}}"\
+          - D sonar.host.url= "${{secrets.SONAR_HOST_URL}}"\
+          - D sonar.login= "${{secrets.SONAR_TOKEN}}"\
           
        
           
