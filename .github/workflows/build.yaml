@@ -32,18 +32,16 @@ jobs:
         run: mvn test
       - name: package with maven 
         run: mvn package
-      
-
       - name: Verify WAR
         run: ls -lh target/
 
         ##SONARQUBE CODE QUALITY
       - name: BUILD, TEST and sonarscan
         run: |
-          mvn clean verify sonar:sonar \
-          - Dsonar.projectkey= train.ticket\
-          - Dsonar.host.url= "${{secrets.SONAR_HOST_URL}}" \
-          - Dsonar.login= "${{secrets.SONAR_TOKEN}}"
+          mvn clean verify sonar : sonar \
+          - Dsonar.projectkey= train.ticket \
+          - Dsonar.host.url= "${{ secrets.SONAR_HOST_URL }}" \
+          - Dsonar.login= "${{ secrets.SONAR_TOKEN }}"
           
        
           
